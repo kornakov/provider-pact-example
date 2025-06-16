@@ -20,7 +20,7 @@ def test_verify_contract(client):
 
     # Запускаем сервер FastAPI в фоне (можно через subprocess)
     import subprocess
-    proc = subprocess.Popen(["uvicorn", "provider.api:app", "--port", "8001"])
+    proc = subprocess.Popen(["uvicorn", "provider.api:app", "--port", "8000"])
 
     # Проверяем контракт
     result = verifier.verify()
