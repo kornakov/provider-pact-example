@@ -17,6 +17,7 @@ username = os.getenv('PACT_BROKER_USERNAME', 'username')
 password = os.getenv('PACT_BROKER_PASSWORD', 'password')
 provider_version = os.getenv('GITHUB_SHA', '1.0.10')
 branch = os.getenv('GITHUB_REF_NAME', 'main')
+consumer_branch = os.getenv("CONSUMER_BRANCH", "main")
 
 def test_verify_contract(client):
     verifier = Verifier(provider="UserServiceProvider", provider_base_url="http://localhost:8011")
@@ -32,6 +33,7 @@ def test_verify_contract(client):
         publish_version=provider_version,
         publish_verification_results=True,
         provider_version_branch=branch,
+        consumer_version_selectors=[{"branch": consumer_branch}],
         enable_pending=False,
         verbose=True
     )

@@ -32,5 +32,6 @@ jobs:
           PACT_BROKER_URL: ${{ secrets.PACT_BROKER_URL }}
           PACT_BROKER_USERNAME: ${{ secrets.PACT_BROKER_USERNAME }}
           PACT_BROKER_PASSWORD: ${{ secrets.PACT_BROKER_PASSWORD }}
+          CONSUMER_BRANCH: ${{ env.BRANCH }}
         run: |
           pytest provider/test_verify.py -v
